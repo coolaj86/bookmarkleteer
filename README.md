@@ -32,3 +32,6 @@ Considerations:
 
 Sites like Facebook, Twitter, etc are using the new "HTML5" Security Policy headers
 that disallow dynamically loaded bookmarklets (and maybe bookmarklets altogether).
+
+You can get around some of the remote script restrictions by loading the script as text
+and putting it into a script tag via the bookmarklet rather than a script with an src.
