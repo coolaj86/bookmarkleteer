@@ -1,0 +1,11 @@
+{
+  "name": "bookmarkleteer",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "locomotive": "0.3.x",
+    "express": "3.x.x",
+    "connect-powered-by": "0.1.x",
+    "jade": "~0.34.1"
+  }
+}
