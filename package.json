@@ -6,6 +6,12 @@
     "locomotive": "0.3.x",
     "express": "3.x.x",
     "connect-powered-by": "0.1.x",
-    "jade": "~0.34.1"
+    "jade": "~0.34.1",
+    "locomotive-mongoose": "~0.1.0",
+    "mongoose": "~3.6.15",
+    "uglify-js": "~2.3.6",
+    "mongoose-pureautoinc": "~2012.1.0",
+    "npm": "~1.3.6",
+    "install": "~0.1.7"
   }
 }

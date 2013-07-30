@@ -1,3 +1,5 @@
+"use strict";
+
 var express = require('express')
   , poweredBy = require('connect-powered-by')
   , util = require('util');
@@ -34,11 +36,13 @@ module.exports = function() {
   // Use middleware.  Standard [Connect](http://www.senchalabs.org/connect/)
   // middleware is built-in, with additional [third-party](https://github.com/senchalabs/connect/wiki)
   // middleware available as separate modules.
+  this.datastore(require('locomotive-mongoose'));
   this.use(poweredBy('Locomotive'));
-  this.use(express.logger());
+  this.use(express.logger({ format: '\x1b[1m:method\x1b[0m \x1b[33m:url\x1b[0m :response-time ms' }));
   this.use(express.favicon());
   this.use(express.static(__dirname + '/../../public'));
-  this.use(express.bodyParser());
+  this.use(express.json());
+  this.use(express.urlencoded());
   this.use(express.methodOverride());
   this.use(this.router);
-}
+};
