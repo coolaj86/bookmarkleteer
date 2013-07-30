@@ -1,0 +1,166 @@
+/* 		RESET
+- - - - - - - - - - - - - -*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* Don't kill focus outline for keyboard users: http://24ways.org/2009/dont-lose-your-focus */
+a:hover, a:active {
+    outline: none;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+hr {
+	margin: 20px 0;
+	border: 0;
+	border-top: 1px solid #eeeeee;
+	border-bottom: 1px solid #ffffff;
+}
+
+/*  	HEADER
+- - - - - - - - - - - - - -*/
+.top{
+	position: relative;
+}
+header h1{
+	color: #2c3e50;
+	font: 30px 'Acme', sans-serif;
+	position: relative;
+	padding: 30px 0 0 200px;	
+}
+.icon1 img{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	right: 300px;
+	top: 30px;
+}
+.icon2 img{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	right: 250px;
+	top: 30px;
+}
+header hr{
+	margin: 30px 0;
+}
+/*    Section main
+- - - - - - - - - - - */
+#about h3{
+	margin: 30px 0;
+	text-align: center;
+	font: 40px 'Pathway Gothic One', sans-serif;
+	color: #27ae60;
+}
+.content input{
+	position: absolute;
+	margin: 50px 0 0 290px;
+}
+.content textarea{
+	width: 400px;
+	height: 200px;
+	position: absolute;
+	margin: 90px 0 0 290px;
+}
+.contentArea textarea{
+	width: 400px;
+	height: 100px;
+	position: absolute;
+	margin: 310px 0 0 290px;
+}
+.bt button{
+	position: relative;
+	margin: 440px 580px 290px;
+}
+.bt input{
+	position: absolute;
+	top: 700px;
+	margin: 0 0 0 300px;
+	size: 50px;
+}
+.bt p{
+	font: 20px 'Pathway Gothic One', sans-serif;
+	position: absolute;
+	top: 695px;
+	margin: 0 0 0 320px;
+}
+.masthead h4{
+	position: absolute;
+	top: 760px;
+	margin: 0 0 0 300px; 
+}
+.masthead a{
+	position: absolute;
+	top: 780px;
+	margin: 0 0 0 300px;
+}
+.networking .net1{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 740px;
+	margin: 0 0 0 500px;
+} 
+.networking .net2{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 739px;
+	margin: 0 0 0 550px;
+}
+.edit h4{
+	position: absolute;
+	top: 830px;
+	margin: 0 0 0 300px;
+}
+.edit a{
+	position: absolute;
+	top: 850px;
+	margin: 0 0 0 300px;
+}
+/*		FOOTER
+- - - - - - - - - - - */
+.container {
+    margin-top: 30px;
+    width: 400px;
+}
