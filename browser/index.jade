@@ -8,6 +8,7 @@ html(lang='pt-BR')
     link(rel='stylesheet', href='assets/css/core.css')
     link(rel='stylesheet', href='assets/css/bootstrap.min.css')
     link(rel='stylesheet', href='assets/css/bootstrap-responsive.min.css')
+    script(src="http://localhost:35729/livereload.js")
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
     script(src='assets/js/bootstrap.min.js')
     script(src='assets/js/pakmanaged.js')
@@ -21,22 +22,26 @@ html(lang='pt-BR')
       hr
 
     section.main
-      form
+      form.js-script
         #about
           h3 Create a Bookmarklet
         .content
-          input(type='text', placeholder='name')
-          textarea(rows='10', placeholder='Past Code Here')
+          input.js-name(name="name", type='text', placeholder='name')
         .contentArea
-          textarea(rows='5', placeholder='Description')
+          textarea.js-description(name="description", rows='5', placeholder='Description')
+        .content
+          textarea.js-raw(name="raw", rows='10', placeholder='Past Code Here')
         .bt
-          button.btn(type='button') Save & Share
+          button.btn(type="submit") Save & Share
           input.chekbox(type='checkbox')
           p Inline Script
 
+    .row
+      a.js-bookmarklet(href="#") Click here to test your bookmarklet!
     section.masthead
-      h4 Share:
-      a(href='#') http://bookmarkleteer.com/jquerify
+      .row
+        h4 Share:
+        a(href='#') http://bookmarkleteer.com/jquerify
       .networking
         a.net1(href='#')
           img(src='assets/img/Facebook.png', alt='')

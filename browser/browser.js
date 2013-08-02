@@ -1,9 +1,11 @@
 window.jQuery(function () {
   "use strict";
 
+  require('./uglify');
   var $ = window.jQuery
     , $events = $('body')
     //, UglifyJS = require('uglify-js')
+    , UglifyJS = window.UglifyJS
     , serializeForm = require('serialize-form').serializeFormObject
     ;
 
@@ -24,12 +26,15 @@ window.jQuery(function () {
   function bookmarkletify(code) {
     code = uglify(code);
     code = encodeURIComponent(code);
+    return code;
   }
 
   function onSubmit(ev) {
     var data
+      , min
       ;
 
+    console.log('submit');
     ev.preventDefault();
     ev.stopPropagation();
     data = serializeForm('form.js-script');
@@ -43,7 +48,10 @@ window.jQuery(function () {
     });
     */
     
-    $('a.js-bookmarklet').attr('href', bookmarkletify(data.raw));
+    min = bookmarkletify(data.raw);
+    console.log('data', data, min);
+    /*jshint scripturl:true*/
+    $('a.js-bookmarklet').attr('href', 'javascript:' + min);
   }
 
   $events.on('submit', 'form.js-script', onSubmit);
