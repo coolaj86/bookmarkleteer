@@ -40,24 +40,26 @@ window.jQuery(function () {
     ev.stopPropagation();
     data = serializeForm('form.js-script');
 
-    /*
-    $.ajax({
-      url: '/script'
-    , method: 'POST'
-    , contentType: 'application/json'
-    , data: JSON.stringify(data)
-    });
-    */
-    
     if (data.usestrict) {
       usestrict = "'use strict';";
     }
     min = bookmarkletify('(function(){' + usestrict + data.raw + '}());');
     console.log('data', data, min);
-    /*jshint scripturl:true*/
-    $('.js-test-container').slideDown();
-    $('a.js-bookmarklet').attr('href', 'javascript:' + min);
-    $('a.js-bookmarklet').text(data.name);
+  
+    function onCreate() {
+      /*jshint scripturl:true*/
+      $('.js-test-container').slideDown();
+      $('a.js-bookmarklet').attr('href', 'javascript:' + min);
+      $('a.js-bookmarklet').text(data.name);
+    }
+
+    $.ajax({
+      url: '/scripts'
+    , method: 'POST'
+    , contentType: 'application/json'
+    , data: JSON.stringify(data)
+    , success: onCreate
+    });
   }
 
   function onShareIt(ev) {

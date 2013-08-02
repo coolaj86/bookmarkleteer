@@ -13,11 +13,17 @@ html(lang='pt-BR')
     script(src='assets/js/bootstrap.min.js')
     script(src='assets/js/pakmanaged.js')
   body
-    .container
+    header.container
       .row
-        header
-          h1 bookmarkleteer
+        .span6
+          h2 bookmarkleteer
+        .js-test-container.span6
+          h2
+            span Ahoy Cap'n: 
+            a.btn.btn-primary.js-bookmarklet(href="javascript:alert('You have to save it first!')") Not Ready
+      .clearfix
 
+    .container
       .row
         section.main.span6
           include form
@@ -25,5 +31,3 @@ html(lang='pt-BR')
         section.span6
           include test
           include share
-
-

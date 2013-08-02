@@ -1,7 +1,12 @@
 .js-test-container
-  p Drag and Drop this Button to your Bookmarks Bar to use it anywhere!
-  p
-    a.btn.js-bookmarklet(href="javascript:alert('You have to save it first!')") Not Ready
-  p (you can click on it here to test it)
-  p
-    a.js-share-it(href="#") Want to share it?
+  form
+    fieldset
+
+      legend Want to share your work?
+      label(for="description") Add a description
+      textarea#description.span6(name="description", rows="3", placeholder="What does it do? Why would anyone want it?").
+
+      label.checkbox
+        input.js-inline(name="inline", type="checkbox")
+        | Inline Script
+      button.js-share-it.btn(type="submit") Get Shareable Links
