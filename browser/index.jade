@@ -13,45 +13,17 @@ html(lang='pt-BR')
     script(src='assets/js/bootstrap.min.js')
     script(src='assets/js/pakmanaged.js')
   body
-    header.top
-      h1 bookmarkleteer
-      a.icon1(href='#')
-        img(src='assets/img/Facebook.png', alt='')
-      a.icon2(href='#')
-        img(src='assets/img/twitter.jpg', alt='')
-      hr
-
-    section.main
-      form.js-script
-        #about
-          h3 Create a Bookmarklet
-        .content
-          input.js-name(name="name", type='text', placeholder='name')
-        .contentArea
-          textarea.js-description(name="description", rows='5', placeholder='Description')
-        .content
-          textarea.js-raw(name="raw", rows='10', placeholder='Past Code Here')
-        .bt
-          button.btn(type="submit") Save & Share
-          input.chekbox(type='checkbox')
-          p Inline Script
-
-    .row
-      a.js-bookmarklet(href="#") Click here to test your bookmarklet!
-    section.masthead
+    .container
       .row
-        h4 Share:
-        a(href='#') http://bookmarkleteer.com/jquerify
-      .networking
-        a.net1(href='#')
-          img(src='assets/img/Facebook.png', alt='')
-        a.net2(href='#')
-          img(src='assets/img/twitter.jpg', alt='')
-      .edit
-        h4 Edit:
-        a(href='#') http://bookmarkleteer.com/jquerify/editing
+        header
+          h1 bookmarkleteer
 
-    footer
-      .container
-        .progress.progress-striped.active
-          .bar(style='width: 50%;')
+      .row
+        section.main.span6
+          include form
+
+        section.span6
+          include test
+          include share
+
+

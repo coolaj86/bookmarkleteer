@@ -4,7 +4,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
       "watch": {
         "all": {
-          files: ["**.jade", "**.less", "lib/*.js"]
+          files: ["**.jade", "**.less", "browser.js", "lib/*.js"]
         , tasks: ["build"]
         , options: {
             livereload: true,

@@ -55,8 +55,21 @@ window.jQuery(function () {
     min = bookmarkletify('(function(){' + usestrict + data.raw + '}());');
     console.log('data', data, min);
     /*jshint scripturl:true*/
+    $('.js-test-container').slideDown();
     $('a.js-bookmarklet').attr('href', 'javascript:' + min);
+    $('a.js-bookmarklet').text(data.name);
   }
 
+  function onShareIt(ev) {
+    console.log('show share');
+    ev.preventDefault();
+    ev.stopPropagation();
+
+    $('.js-share-container').slideDown();
+  }
+
+  $('.js-test-container').hide();
+  $('.js-share-container').hide();
   $events.on('submit', 'form.js-script', onSubmit);
+  $events.on('click', '.js-share-it', onShareIt);
 });

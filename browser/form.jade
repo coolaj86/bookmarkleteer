@@ -1,0 +1,17 @@
+form.form-horizontal.js-script
+  #about
+    h3 Create a Bookmarklet
+  .control-group
+    label.control-label(for="name") Bookmarklet Name
+    .controls
+      input#name.js-name(name="name", type="text", placeholder="Awesome-ify")
+
+  .control-group
+    label.control-label(for="raw") JavaScript
+    .controls
+      textarea#inputEmail(name="raw", type="text", rows="10", placeholder="window.alert('Hello World!');").
+        window.alert('Hello World!');
+
+  .control-group
+    .controls
+      button.btn(type="submit") Bookmarkletify
