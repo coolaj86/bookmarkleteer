@@ -9,4 +9,9 @@ form.js-script
     label(for="name") Bookmarklet Name
     input#name.js-name(name="name", type="text", placeholder="Awesome-ify")
 
-    button.pull-right.btn(type="submit") Bookmarkletify
+    button.pull-right.btn(type="submit") Create Bookmarklet
+
+.js-bookmarklet-container
+  a.btn.btn-primary.js-bookmarklet(href="javascript:alert('You have to save it first!')") Your Bookmarklet Goes Here
+  p That's your bookmarklet! You can click it to test it and put it in your bookmarks bar to use it anywhere!
+  p P.S. Our end goal is to allow you to share this bookmarklet with others.

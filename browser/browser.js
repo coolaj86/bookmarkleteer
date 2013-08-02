@@ -48,7 +48,7 @@ window.jQuery(function () {
   
     function onCreate() {
       /*jshint scripturl:true*/
-      $('.js-test-container').slideDown();
+      $('.js-bookmarklet-container').slideDown();
       $('a.js-bookmarklet').attr('href', 'javascript:' + min);
       $('a.js-bookmarklet').text(data.name);
     }
@@ -72,6 +72,8 @@ window.jQuery(function () {
 
   $('.js-test-container').hide();
   $('.js-share-container').hide();
+  $('.js-bookmarklet-container').hide();
+
   $events.on('submit', 'form.js-script', onSubmit);
   $events.on('click', '.js-share-it', onShareIt);
 });
