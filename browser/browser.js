@@ -32,6 +32,7 @@ window.jQuery(function () {
   function onSubmit(ev) {
     var data
       , min
+      , usestrict = ""
       ;
 
     console.log('submit');
@@ -48,7 +49,10 @@ window.jQuery(function () {
     });
     */
     
-    min = bookmarkletify(data.raw);
+    if (data.usestrict) {
+      usestrict = "'use strict';";
+    }
+    min = bookmarkletify('(function(){' + usestrict + data.raw + '}());');
     console.log('data', data, min);
     /*jshint scripturl:true*/
     $('a.js-bookmarklet').attr('href', 'javascript:' + min);
