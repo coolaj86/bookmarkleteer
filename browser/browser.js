@@ -1,8 +1,9 @@
 window.jQuery(function () {
   "use strict";
 
-  var $events = $('body')
-    , UglifyJS = require('uglify-js')
+  var $ = window.jQuery
+    , $events = $('body')
+    //, UglifyJS = require('uglify-js')
     , serializeForm = require('serialize-form').serializeFormObject
     ;
 

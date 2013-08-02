@@ -46,7 +46,6 @@ module.exports = function (grunt) {
           // TODO add pretty option
           files: {
             "../public/index.html": "index.jade"
-          , "../public/auth-callback.html": "auth-callback.jade"
           }
         }
       , "dist": {
