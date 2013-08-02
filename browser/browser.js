@@ -49,12 +49,15 @@ window.jQuery(function () {
     function onCreate() {
       /*jshint scripturl:true*/
       $('.js-bookmarklet-container').slideDown();
+      $('.js-test-container').slideDown();
       $('a.js-bookmarklet').attr('href', 'javascript:' + min);
       $('a.js-bookmarklet').text(data.name);
     }
 
+    onCreate();
+    return;
     $.ajax({
-      url: '/scripts'
+      url: 'http://api.bookmarkleteer.com/scripts'
     , method: 'POST'
     , contentType: 'application/json'
     , data: JSON.stringify(data)
