@@ -3,14 +3,9 @@ form.js-script
     legend Create a Bookmarklet
 
     label(for="raw") JavaScript
-    //-textarea.span6(name="raw", rows="3", disabled="disabled").
-      (function () {
-        "use strict";
 
     textarea#raw.span6(name="raw", rows="10", placeholder="window.alert('Hello World!');").
       window.alert('Hello World!');
-    //-textarea.span6(name="raw", rows="3", disabled="disabled").
-      }());
 
     label(for="name") Bookmarklet Name
     input#name.js-name(name="name", type="text", value="HelloWorld-ify", placeholder="Awesome-ify")
