@@ -1,6 +1,23 @@
 bookmarkleteer
 ==============
 
+Install
+===
+
+    git clone https://github.com/coolaj86/bookmarkleteer
+    pushd bookmarkleteer/
+      npm install
+      npm install -g locomotive
+      pushd browser/
+        npm install
+        npm install -g grunt-cli
+        grunt build
+      popd
+      lcm server 5050
+
+Visit <http://localhost:5050>
+
+
 API
 ===
 

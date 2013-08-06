@@ -3,11 +3,17 @@ form.js-script
     legend Create a Bookmarklet
 
     label(for="raw") JavaScript
+    //-textarea.span6(name="raw", rows="3", disabled="disabled").
+      (function () {
+        "use strict";
+
     textarea#raw.span6(name="raw", rows="10", placeholder="window.alert('Hello World!');").
       window.alert('Hello World!');
+    //-textarea.span6(name="raw", rows="3", disabled="disabled").
+      }());
 
     label(for="name") Bookmarklet Name
-    input#name.js-name(name="name", type="text", text="HelloWorld-ify", placeholder="Awesome-ify")
+    input#name.js-name(name="name", type="text", value="HelloWorld-ify", placeholder="Awesome-ify")
 
     button.pull-right.btn(type="submit") Create Bookmarklet
 
@@ -15,4 +21,4 @@ form.js-script
   a.btn.btn-primary.js-bookmarklet(href="javascript:alert('You have to save it first!')") Your Bookmarklet Goes Here
   p
   p This is your bookmarklet!
-  p Click it to test it out. Then put it in your bookmarks bar and use it everywhere!
+  p Click it to test it out. Then drag it to your bookmarks bar and use it everywhere!
