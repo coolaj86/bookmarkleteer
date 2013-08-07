@@ -1,6 +1,8 @@
 bookmarkleteer
 ==============
 
+Source for <http://bookmarkleteer.com>
+
 Install
 ===
 
