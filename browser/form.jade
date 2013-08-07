@@ -1,19 +1,20 @@
-form.js-script
-  fieldset
-    legend Create a Bookmarklet
+.js-create-container
+  form.js-script
+    fieldset
+      legend Create a Bookmarklet
 
-    label(for="raw") JavaScript
+      label(for="raw") JavaScript
 
-    textarea#raw.span6(name="raw", rows="10", placeholder="window.alert('Hello World!');").
-      window.alert('Hello World!');
+      textarea#raw.span6(name="raw", rows="10", placeholder="window.alert('Hello World!');").
+        window.alert('Hello World!');
 
-    label(for="name") Bookmarklet Name
-    input#name.js-name(name="name", type="text", value="HelloWorld-ify", placeholder="Awesome-ify")
+      label(for="name") Bookmarklet Name
+      input#name.js-name(name="name", type="text", value="HelloWorld-ify", placeholder="Awesome-ify")
 
-    button.pull-right.btn(type="submit") Create Bookmarklet
+      button.pull-right.btn(type="submit") Create Bookmarklet
 
-.js-bookmarklet-container
-  a.btn.btn-primary.js-bookmarklet(href="javascript:alert('You have to save it first!')") Your Bookmarklet Goes Here
-  p
-  p This is your bookmarklet!
-  p Click it to test it out. Then drag it to your bookmarks bar and use it everywhere!
+  .js-bookmarklet-container
+    a.btn.btn-primary.js-bookmarklet(href="javascript:alert('You have to save it first!')") Your Bookmarklet Goes Here
+    p
+    p This is your bookmarklet!
+    p Click it to test it out. Then drag it to your bookmarks bar and use it everywhere!
