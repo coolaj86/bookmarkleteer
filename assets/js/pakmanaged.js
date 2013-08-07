@@ -1037,6 +1037,8 @@ var global = Function("return this;")();
         //, UglifyJS = require('uglify-js')
         , UglifyJS = window.UglifyJS
         , serializeForm = require('serialize-form').serializeFormObject
+        , reEditable = /^#?\/?([^\/]+)\/edit\/([^\/]+)\/?$/
+        , reShareable = /^#?\/?([^\/]+)(?:\/([^\/]+))?\/?$/
         ;
     
       function uglify(code) {
@@ -1103,12 +1105,59 @@ var global = Function("return this;")();
         $('.js-share-container').slideDown();
       }
     
+      function loadEditable() {
+        $('.js-loading-container').show();
+        $('.js-create-container').show();
+      }
+      function loadShareable(id) {
+        $('.js-loading-container').show();
+        $.ajax({
+          url: '/api/scripts/' + id
+        , method: 'GET'
+        , success: function (data) {
+            /*jshint scripturl: true*/
+            var root = $('.js-product-container')
+              ;
+            root.find('.js-name').text(data.name);
+            root.find('.js-description').text(data.description || 'No description given.');
+            data.raw = data.raw || data._raw;
+            data.minified = data.minified || data._minified || uglify(data.raw);
+            data.uriencoded = data.uriencoded || data._uriencoded || encodeURIComponent(data._minified);
+            root.find('a.js-bookmarklet').text(data.name).attr('href', 'javascript:' + data.uriencoded);
+            root.show();
+          }
+        , error: function () {
+            location.href = '/#404';
+          }
+        });
+      }
+      function loadCreateable() {
+        $('.js-create-container').show();
+      }
+    
+      $('.js-loading-container').hide();
+      $('.js-product-container').hide();
+      $('.js-create-container').hide();
       $('.js-test-container').hide();
       $('.js-share-container').hide();
       $('.js-bookmarklet-container').hide();
     
       $events.on('submit', 'form.js-script', onSubmit);
       $events.on('click', '.js-share-it', onShareIt);
+    
+      // #/xyz123/edit/abc987def345/
+      // #xyz123/edit/abc987def345
+      // TODO add users and allow #xyz123/edit
+      if (reEditable.test(location.hash)) {
+        loadEditable(reEditable.exec(location.hash)[1], reEditable.exec(location.hash)[2]);
+      // #/xyz123/jQuerify/
+      // #xyz123/jQuerify
+      // #xyz123
+      } else if (reShareable.test(location.hash)) {
+        loadShareable(reShareable.exec(location.hash)[1]);
+      } else {
+        loadCreateable();
+      }
     });
     
   provide("bookmarkleteer-browser", module.exports);
