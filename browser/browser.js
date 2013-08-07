@@ -88,6 +88,7 @@ window.jQuery(function () {
   }
 
   $('.js-loading-container').hide();
+  $('.js-product-container').hide();
   $('.js-create-container').hide();
   $('.js-test-container').hide();
   $('.js-share-container').hide();
