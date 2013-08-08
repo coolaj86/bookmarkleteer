@@ -3,7 +3,7 @@
 // http://mongoosejs.com/docs/guide.html#definition
 var mongoose = require('mongoose')
   , UglifyJS = require('uglify-js')
-  , statify = require('../../browser/statify')
+  //, statify = require('../../browser/statify')
   , pureautoinc = require('mongoose-pureautoinc')
   , schema = {
       "name": String
@@ -88,7 +88,9 @@ Schema.virtual('href')
 Schema.virtual('minified')
   .get(function () {
     if (!this._minified && this._raw) {
-      this._minified = uglify(statify(this._raw, this.id));
+      // only statify is needed when we inline...
+      //this._minified = uglify(statify(this._raw, this.id));
+      this._minified = uglify(this._raw, this.id);
     }
     return this._minified;
   })

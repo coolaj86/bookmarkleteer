@@ -61,9 +61,16 @@ window.jQuery(function () {
 
     return bookmarkletify(code);
   }
-  function inlineBookmarkletify(code) {
+  function inlineBookmarkletify(code, opts) {
+    opts = opts || {};
     // we only need to statify inlined bookmarklets
     // TODO maybe get an id for the sake of tracking how many are created?
+    if (opts.isMinified) {
+      code = uglify(statify('console.log("ZZZZ")')).replace(/console\.log\(["']ZZZZ["']\)/, code);
+      code = encodeURIComponent(code);
+      return code;
+    }
+
     code = statify(code);
     return bookmarkletify(code);
   }
@@ -195,7 +202,7 @@ window.jQuery(function () {
         root.find('.js-source').text(data.raw);
         data.raw = data.raw || data._raw;
         if (data.minified) {
-          data.uriencoded = data.uriencoded || data._uriencoded || encodeURIComponent(data.minified);
+          data.uriencoded = inlineBookmarkletify(data.minified, { isMinified: true });
         } else {
           data.uriencoded = inlineBookmarkletify(data.raw);
         }
