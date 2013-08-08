@@ -18,13 +18,21 @@ var mongoose = require('mongoose')
     , "secret": String
     , "created": Date
     , "modified": Date
+    , "views": Number
+    , "uses": Number
     }
   , Schema = new (mongoose.Schema)(
       schema
     , { _id: false
       , id: false
-      , toObject: { virtuals: true }
-      //, toJSON: { getters: true, virtuals: true }
+      , toJSON: { getters: true, virtuals: true, transform: function (doc, obj) {
+          delete obj._id;
+          delete obj._secret;
+          delete obj._raw;
+          delete obj._minified;
+          delete obj._uriencoded;
+        } }
+      , toObject: { getters: true, virtuals: true }
       }
     )
   ;
@@ -75,6 +83,7 @@ Schema.virtual('minified')
     if (!this._minified && this._raw) {
       this._minified = uglify(this._raw);
     }
+    return this._minified;
   })
   ;
 

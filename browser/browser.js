@@ -79,9 +79,27 @@ window.jQuery(function () {
     $('.js-loading-container').show();
     $('.js-create-container').show();
   }
-  function loadShareable() {
+  function loadShareable(id) {
     $('.js-loading-container').show();
-    $('.js-product-container').show();
+    $.ajax({
+      url: '/api/scripts/' + id
+    , method: 'GET'
+    , success: function (data) {
+        /*jshint scripturl: true*/
+        var root = $('.js-product-container')
+          ;
+        root.find('.js-name').text(data.name);
+        root.find('.js-description').text(data.description || 'No description given.');
+        data.raw = data.raw || data._raw;
+        data.minified = data.minified || data._minified || uglify(data.raw);
+        data.uriencoded = data.uriencoded || data._uriencoded || encodeURIComponent(data._minified);
+        root.find('a.js-bookmarklet').text(data.name).attr('href', 'javascript:' + data.uriencoded);
+        root.show();
+      }
+    , error: function () {
+        location.href = '/#404';
+      }
+    });
   }
   function loadCreateable() {
     $('.js-create-container').show();

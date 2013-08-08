@@ -2,7 +2,7 @@
 
 var locomotive = require('locomotive')
   , Controller = locomotive.Controller
-  , Scripts = require('../models/scripts')
+  , Scripts = require('../../models/scripts')
   , ScriptsController = new Controller()
   ;
 
@@ -53,24 +53,48 @@ ScriptsController.index = function() {
 
 ScriptsController.before('show', function(next) {
   var me = this
-    , id = me.param('id')
+    , id = parseInt(me.param('id').toLowerCase(), 36)
     ;
+
   // findOne
   Scripts.findOne(
+  //Scripts.findById(me.param('id'), function(err, script) {
     { id: id 
     }
   , function (err, script) {
-  //Scripts.findById(me.param('id'), function(err, script) {
-    console.log('find', me.param('id'), err, script);
-    if (err) { return next(err); }
-    me._script = script;
-    next();
+      console.log('find', id, err, script);
+      if (err || !script) { return next(err); }
+      me._script = script;
+      next();
     }
   );
 });
 
 ScriptsController.show = function() {
-  this.res.send(this._script);
+  var script = this._script
+    ;
+
+  if (!this._script) {
+    this.res.send({ error: "not found", status: 404, message: "not found" });
+    return;
+  }
+  
+  // this doesn't work
+  //if (/\.min\.js$/.test(this.req.url)) {
+    //this.res.send(this._script.minified);
+  //} else
+  if (/\.js$/.test(this.req.url)) {
+    script.uses = script.uses || 0;
+    script.uses += 1;
+    script.save(); //{ uses: script.uses });
+    this.res.send(script.minified);
+    //this.res.send(this._script.raw);
+  } else {
+    script.views = script.views || 0;
+    script.views += 1;
+    script.save(); //update({ views: script.views });
+    this.res.send(script);
+  }
 };
 
 module.exports = ScriptsController;

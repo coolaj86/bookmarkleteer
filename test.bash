@@ -1,4 +1,5 @@
-curl http://localhost:5050/scripts \
+DATE=`date "+%F %T"`
+curl http://local.bookmarkleteer.com:5050/api/scripts \
   -X POST \
   -H 'Content-Type: application/json' \
   -d '{

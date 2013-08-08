@@ -10,6 +10,10 @@
 module.exports = function routes() {
   this.root('pages#main');
 
-  // Note the trailing 's' in resources denoting that this is NOT a singleton
-  this.resources('scripts', { only: [ 'index', 'create', 'show', 'update', 'destroy' ] });
+  // ./app/controllers/api/
+  this.namespace('api', function () {
+    // ./app/controllers/api/scripts_controller.js
+    // Note the trailing 's' in resources denoting that this is NOT a singleton
+    this.resources('scripts', { only: [ 'index', 'create', 'show', 'update', 'destroy' ] });
+  });
 };

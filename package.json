@@ -10,7 +10,7 @@
     "locomotive-mongoose": "~0.1.0",
     "mongoose": "~3.6.15",
     "uglify-js": "~2.3.6",
-    "mongoose-pureautoinc": "~2012.1.0",
+    "mongoose-pureautoinc": "git+https://github.com/coolaj86/mongoose-pureautoinc#9e42e7f4793c4c2563a97ebfc03d72aa30e6af36",
     "npm": "~1.3.6",
     "install": "~0.1.7"
   }

@@ -17,15 +17,21 @@ html(lang="en")
     header.container
       .row
         .span6
-          h2 Bookmarkleteer
+          h2 
+            img(src="images/bookmarklet-icon.png", style="height: 32px;")
+            span  
+            span Bookmarkleteer
       .clearfix
 
     .container
       .row
-        section.main.span6
-          include form
-          include product
+        section
+          .span6
+            //-(style="padding-right: 5px; margin-right: -6px; border-right: 1px solid #e3e3e3;")
+            include form
+            include product
 
         section.span6
           include test
           include share
+          include howto
