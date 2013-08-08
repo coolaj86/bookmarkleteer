@@ -235,7 +235,7 @@ window.jQuery(function () {
   $('.js-publish-container').hide();
   $('.js-product-container').hide();
   $('.js-create-container').hide();
-  $('.js-share-container').hide();
+  //$('.js-share-container').hide();
   $('.js-bookmarklet-container').hide();
 
   $events.on('submit', 'form.js-script', onSubmit);

@@ -75,13 +75,15 @@ TODO
 ===
 
 * Remove hard-coded references to bookmarkleteer.com
+* Change view when url changes
 * Show which bookmarklets are most popular.
 * Track which referrers are most popular.
 * Allow user to edit via secret
-* Allow user to flag a script as bad
-* Allow XHR2 / CORS loading of script as text
 * Show UI for choosing inlined vs fetched bookmarklet
 * Add social shares
+* Let description be in markdown
+* Allow user to flag a script as bad
+* Allow XHR2 / CORS loading of script as text
 * Support drag 'n' drop file upload
 * Support [iFrame + window.postMessage hack](http://blog.coolaj86.com/articles/how-to-get-around-latest-browser-security-measures/)
 
