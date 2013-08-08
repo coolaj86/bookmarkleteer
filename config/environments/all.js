@@ -2,7 +2,8 @@
 
 var express = require('express')
   , poweredBy = require('connect-powered-by')
-  , util = require('util');
+  , util = require('util')
+  ;
 
 module.exports = function() {
   // Warn of version mismatch between global "lcm" binary and local installation

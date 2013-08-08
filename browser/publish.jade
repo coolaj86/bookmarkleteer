@@ -1,0 +1,18 @@
+.js-publish-container
+  form.js-publish
+    fieldset
+
+      legend Want to share your work?
+      label(for="description") Add a description
+      textarea#description.js-description.span6(name="description", rows="3", placeholder="What does it do? Why would anyone want it?").
+
+      //-label.checkbox
+        input.js-inline(name="inline", type="checkbox")
+        | Inline Script
+      button.js-share-it.btn(type="submit") Get Shareable Links
+
+section.js-share-container
+  h4 Share:
+  a.js-share-link(href='#') http://bookmarkleteer.com/#abc123/jquerify
+  //h4 Edit:
+  //a.js-edit-link(href='#') http://bookmarkleteer.com/#abc123/987cba123958489

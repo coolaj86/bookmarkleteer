@@ -3,6 +3,8 @@ bookmarkleteer
 
 Source for <http://bookmarkleteer.com>
 
+A web app that creates bookmarklets from JavaScript snippets.
+
 Install
 ===
 
@@ -15,7 +17,7 @@ Install
         npm install -g grunt-cli
         grunt build
       popd
-      lcm server 5050
+      lcm server -p 5050
 
 Visit <http://localhost:5050>
 
@@ -39,21 +41,27 @@ Update a script
 
 Get a script (the whole object)
 
-### GET /scripts/:id/name.min.js
+### GET /scripts/:id.js
 
 Get just the minified text
+
+### GET /scripts/:id.gif
+
+Get just bump the counter
+
+### OPTIONS /scripts/:id.txt && GET /scripts/:id.txt
+
+Serve script with text mime type as CORS resource 
 
 ### Example Object
 
 ```javascript
 {
-  "name": String
+  "id": Number // must be converted to base 36
+, "name": String
 , "description": String
-, "_raw": String
-, "_minified": String
-, "_uriencoded": String
-, "_loader": String
-, "id": Number
+, "raw": String
+, "minified": String
   // if owned, the owner must be logged in to edit
 , "owner": String
   // if secret, the edit must have the secret supplied
@@ -63,47 +71,23 @@ Get just the minified text
 }
 ```
 
-
-Goals
+TODO
 ===
 
-Source for bookmarkleteer.com
+* Remove hard-coded references to bookmarkleteer.com
+* Show which bookmarklets are most popular.
+* Track which referrers are most popular.
+* Allow user to edit via secret
+* Allow user to flag a script as bad
+* Allow XHR2 / CORS loading of script as text
+* Add social shares
+* Support drag 'n' drop file upload
+* Support [iFrame + window.postMessage hack](http://blog.coolaj86.com/articles/how-to-get-around-latest-browser-security-measures/)
 
-A web site where you paste a snippet of javascript and it creates a bookmarklet for you that you can share.
-
-For example http://bookmarkleteer.com/#jQuerify would take you to a page where there's a bookmarklet that loads jquery.
-
-Maybe 
-http://api.bookmarkleteer.com/v1/bm/jquerify
-or
-http://api.bookmarkleteer.com/v1/bm/abcd01234/jquerify
-
-Might return something like
-
-     { id: "ef842ax" , name: "jQuerify" , script: "" , }
-
-It would be convenient to be able to get the original script, maybe
-http://raw.bookmarkleteer.com/v1/bm/abcd01234/jquerify.js
-and the minified
-http://raw.bookmarkleteer.com/v1/bm/abcd01234/jquerify.min.js
-and the url encoded
-http://raw.bookmarkleteer.com/v1/bm/abcd01234/jquerify.urlencoded.js
-
-It could be CORS enabled so that you can AJAX load the script from anywhere.
-
-There could be a checkbox for "include entire script" in the bookmarklet, but by default, load it dynamically from bookmarkleteer.com
-Also allow external links and gists.
-
-Considerations:
-
-Sites like Facebook, Twitter, etc are using the new "HTML5" Security Policy headers
-that disallow dynamically loaded bookmarklets (and maybe bookmarklets altogether).
-
-You can get around some of the remote script restrictions by loading the script as text
-and putting it into a script tag via the bookmarklet rather than a script with an src.
-
-MongoDB
+Apendix
 ===
+
+### MongoDB
 
 To have launchd start mongodb at login:
 

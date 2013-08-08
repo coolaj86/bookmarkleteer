@@ -4,6 +4,7 @@ var locomotive = require('locomotive')
   , Controller = locomotive.Controller
   , Scripts = require('../../models/scripts')
   , ScriptsController = new Controller()
+  , clearGif = require('../../../lib/clear-gif')
   ;
 
 ScriptsController.create = function() {
@@ -26,6 +27,7 @@ ScriptsController.create = function() {
   script.name = this.param('name');
   script.description = this.param('description');
   script.raw = this.param('raw');
+  script.secret = this.param('secret');
   script.created = Date.now();
   script.modified = Date.now();
   console.log('saving');
@@ -41,6 +43,13 @@ ScriptsController.index = function() {
 
   function respond(err, scripts) {
     me.res.send(scripts);
+  }
+
+  if (/\.gif$/.test(this.req.url)) {
+    // TODO counter
+    this.res.setHeader('Content-Type', 'image/gif');
+    this.res.send(clearGif);
+    return;
   }
 
   Scripts.find()
@@ -87,8 +96,13 @@ ScriptsController.show = function() {
     script.uses = script.uses || 0;
     script.uses += 1;
     script.save(); //{ uses: script.uses });
+    this.res.setHeader('Content-Type', 'application/javascript');
     this.res.send(script.minified);
     //this.res.send(this._script.raw);
+  } else if (/\.gif$/.test(this.req.url)) {
+    // set in config/initializers/02_clear-gif.js, used for tracking
+    this.res.setHeader('Content-Type', 'image/gif');
+    this.res.send(clearGif);
   } else {
     script.views = script.views || 0;
     script.views += 1;

@@ -3,6 +3,7 @@
 // http://mongoosejs.com/docs/guide.html#definition
 var mongoose = require('mongoose')
   , UglifyJS = require('uglify-js')
+  , statify = require('../../browser/statify')
   , pureautoinc = require('mongoose-pureautoinc')
   , schema = {
       "name": String
@@ -27,7 +28,8 @@ var mongoose = require('mongoose')
       , id: false
       , toJSON: { getters: true, virtuals: true, transform: function (doc, obj) {
           delete obj._id;
-          delete obj._secret;
+          delete obj.__v;
+          delete obj.secret;
           delete obj._raw;
           delete obj._minified;
           delete obj._uriencoded;
@@ -77,11 +79,16 @@ Schema.virtual('raw')
     this._uriencoded = null;
   })
   ;
+Schema.virtual('href')
+  .get(function () {
+    return '/api/scripts/' + this.id.toString(36) + '.js';
+  })
+  ;
 
 Schema.virtual('minified')
   .get(function () {
     if (!this._minified && this._raw) {
-      this._minified = uglify(this._raw);
+      this._minified = uglify(statify(this._raw, this.id));
     }
     return this._minified;
   })
