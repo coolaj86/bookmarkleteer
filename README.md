@@ -81,6 +81,10 @@ TODO
 * Allow user to edit via secret
 * Show UI for choosing inlined vs fetched bookmarklet
 * Add social shares
+* Advanced options
+  * don't minify
+  * prefer inline vs fetch
+  * no tracking gif
 * Let description be in markdown
 * Allow user to flag a script as bad
 * Allow XHR2 / CORS loading of script as text
