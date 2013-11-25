@@ -54,7 +54,7 @@ window.jQuery(function () {
       + "    ;\n"
       + "\n"
       + "  s = document.createElement('script');\n"
-      + "  s.src = '" + href + "';\n"
+      + "  s.src = '//" + location.host + href + "';\n"
       + "  document.body.appendChild(s);\n"
       + "}());\n"
       ;
