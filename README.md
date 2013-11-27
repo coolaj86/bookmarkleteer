@@ -15,7 +15,7 @@ Install
       pushd browser/
         npm install
         npm install -g grunt-cli
-        grunt build
+        grunt build # builds to ../public
       popd
       lcm server -p 5050
 
